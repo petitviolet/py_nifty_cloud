@@ -1,4 +1,4 @@
-# [Nifty Cloud Mobile Backend](http://mb.cloud.nifty.com/)のPython Wrapper
+# Python Wrapper for [Nifty Cloud Mobile Backend](http://mb.cloud.nifty.com/)
 
 This module is a python wrapper for Nifty Cloud Mobile Backend.
 Easy request for Nifty Cloud DataStore.

@@ -2,7 +2,10 @@
 import yaml
 import requests
 from datetime import datetime
-from urllib.parse import quote
+try:
+    from urllib.parse import quote
+except:
+    from urllib import quote
 import hmac
 import hashlib
 import base64
