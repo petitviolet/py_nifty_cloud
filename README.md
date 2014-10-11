@@ -9,6 +9,8 @@ Easy request for Nifty Cloud DataStore.
 pip install py_nifty_cloud
 ```
 
+uploaded to [py_nifty_cloud: Python Package Index](https://pypi.python.org/pypi/py_nifty_cloud)
+
 # sample usage
 
 ```py
