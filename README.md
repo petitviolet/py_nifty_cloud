@@ -20,7 +20,7 @@ from py_nifty_cloud.nifty_cloud_request import NiftyCloudRequest
 # instanciate with yaml file contains APPLICATION KEY and CLIENT KEY
 ncr = NiftyCloudRequest('~/.nifty_cloud.yml')
 path, = '/classes/your_class'
-query= {'where' : {'product_name': 'sample_product'}}
+query= {'where' : {'key': 'value'}}
 method = 'GET'
 
 # standard way to request 
