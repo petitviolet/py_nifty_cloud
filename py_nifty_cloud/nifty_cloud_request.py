@@ -50,6 +50,12 @@ class NiftyCloudRequest(object):
         '''
         return self.request(path, query, 'POST')
 
+    def put(self, path, query):
+        ''' putのalias
+        requestを参照
+        '''
+        return self.request(path, query, 'PUT')
+
     def request(self, path, query, method):
         ''' niftyのmbaasにrequestを送る
         Reference:
