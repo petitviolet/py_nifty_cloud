@@ -56,6 +56,12 @@ class NiftyCloudRequest(object):
         '''
         return self.request(path, query, 'PUT')
 
+    def delete(self, path, query):
+        ''' deleteのalias
+        requestを参照
+        '''
+        return self.request(path, query, 'DELETE')
+
     def request(self, path, query, method):
         ''' niftyのmbaasにrequestを送る
         Reference:
