@@ -133,9 +133,10 @@ class NiftyCloudRequest(object):
 
     def __join_query(self, encoded_dict_query):
         ''' key=valueにして&でつなぐ
+        シグネチャ生成で使うためsortしておく
         '''
         return '&'.join(
-            '='.join(e) for e in (encoded_dict_query.items())
+            '='.join(e) for e in sorted(encoded_dict_query.items())
         )
 
     def __encode_query(self, dict_query):
