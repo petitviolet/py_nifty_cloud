@@ -38,31 +38,31 @@ class NiftyCloudRequest(object):
         self.APP_KEY = config['APPLICATION_KEY']
         self.CLIENT_KEY = config['CLIENT_KEY']
 
-    def get(self, path, query):
+    def get(self, path, query, **kwargs):
         ''' getのalias
         requestを参照
         '''
-        return self.request(path, query, 'GET')
+        return self.request(path, query, 'GET', **kwargs)
 
-    def post(self, path, query):
+    def post(self, path, query, **kwargs):
         ''' postのalias
         requestを参照
         '''
-        return self.request(path, query, 'POST')
+        return self.request(path, query, 'POST', **kwargs)
 
-    def put(self, path, query):
+    def put(self, path, query, **kwargs):
         ''' putのalias
         requestを参照
         '''
-        return self.request(path, query, 'PUT')
+        return self.request(path, query, 'PUT', **kwargs)
 
-    def delete(self, path, query):
+    def delete(self, path, query, **kwargs):
         ''' deleteのalias
         requestを参照
         '''
-        return self.request(path, query, 'DELETE')
+        return self.request(path, query, 'DELETE', **kwargs)
 
-    def request(self, path, query, method):
+    def request(self, path, query, method, **kwargs):
         ''' niftyのmbaasにrequestを送る
         Reference:
             http://mb.cloud.nifty.com/doc/rest/common/format.html
@@ -70,6 +70,7 @@ class NiftyCloudRequest(object):
             path: 叩くAPIのpath(eg. /classes/TestClass)
             query: 辞書形式のクエリ(eg. {'where': {'key': 'value'}})
             method: 'get' or 'post'
+            kwargs: requests.request に追加で渡すパラメータ
         Return:
             response: requestに対するresponse
         '''
@@ -81,12 +82,14 @@ class NiftyCloudRequest(object):
         headers = self.__make_headers(signature)
         # pathからurlを作成する
         url = self.__make_url(path)
-        # getの時はURLパラメータにqueryを足す
+        kwargs['headers'] = headers
         if method.upper() == 'GET':
+            # getの時はURLパラメータにqueryを足す
             url += '?' + self.__query(query)
-        # getでもpostでもqueryをpostする
-        response = requests.request(
-            method, url, data=json.dumps(query), headers=headers)
+        else:
+            # get以外ならbodyにqueryを入れる
+            kwargs['data'] = json.dumps(query)
+        response = requests.request(method, url, **kwargs)
         return response
 
     def __make_headers(self, signature):
