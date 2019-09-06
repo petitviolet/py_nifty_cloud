@@ -23,7 +23,7 @@ class NiftyCloudRequest(object):
     defaultでは~/.nifty.ymlを読み込む
     '''
     API_PROTOCOL = 'https'
-    API_DOMAIN = 'mb.api.cloud.nifty.com'
+    API_DOMAIN = 'mbaas.api.nifcloud.com'
     API_VERSION = '2013-09-01'
     CHARSET = 'UTF-8'
     SIGNATURE_METHOD = 'HmacSHA256'
