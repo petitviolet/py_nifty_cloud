@@ -2,5 +2,5 @@
 '''
 '''
 __author__ = 'petitviolet'
-__version__ = '0.9.3'
+__version__ = '0.9.5'
 __license__ = 'MIT'
